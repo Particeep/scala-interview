@@ -10,3 +10,39 @@
 5) Explain the difference between a GET and a POST (like how are sent the parameters)
 
 6) You can’t work out how to solve a coding problem. What do you do to find the answer?
+
+
+Answers : 
+
+1- 	REST represents a communication standard based on the HTTP protocol, that allow half duplex communication between computers systems in a 	    network, communication is always initiated by the client.
+
+	RESTFUL is referred for web services written by applying REST architectural concept. it can be implemented with differente languages.
+	In RESTFUL web service HTTP methods like GET, POST, PUT and DELETE can be used to perform CRUD operations
+
+2- The architectural style for creating web api are
+	Create http server that expose a web API
+    Create client that consume API exposed by the server
+    Use XML/JSON as formatting language
+  	Specify headers for both client and server, for example the content-type, host, Authorization ...
+  	Stateless communication
+
+3- first we need to explain that http request is composed of four elements :  URL, methode, headers and body
+
+	this is an abstract of when we use such methode i
+
+	GET: require just URL, headers are optionals , body are not accepted ,we use this methode to read information from server
+    POST: require just URL, headers and body  are optionals, we use this methode send new data to server for creation request
+    PUT: require just URL, headers and body  are optionals, we use this methode to update existing data
+    DELETE: require just URL, headers are optionals , body are not accepted, we use this methode to remove data from server
+    OPTIONS: require just URL, headers and body  are optionals we use this methode to indicates which techniques are supported
+
+    we can found more methodes like HEAD, PATCH ...
+
+4-  A stateful protocol is a protocol that manage states between many requests.
+    Stateless protocols do not manage state and treats every request as a new one.
+    so HTTP is a stateless protocol.
+
+5-  GET is used to read data from server, POST is used to write data to server, in CRUD operations, we use GET to read data, POST 
+	to insert new data.
+
+6- First thing, i will ask my team members if one of them know the solution, if no one know it, i will learn from  other developpers experience over the internet, from stackoverflow or i will search solutions in github
