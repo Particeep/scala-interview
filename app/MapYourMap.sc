@@ -10,5 +10,7 @@ object MapYourMap {
   Map(frontend -> List(Remy, Alexandre), analytics -> List(Pierre), api -> List(Noe))
    */
 
-  val namesInDepartments = ???
+  val namesInDepartments = devDepartments.toList.flatMap {
+                    case (key, value) => devNames.get(key).map(_ -> value)
+                    }.groupBy(_._2).mapValues(_.map(_._1))
 }
