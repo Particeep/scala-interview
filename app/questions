@@ -1,12 +1,76 @@
 
 1) Explain REST and RESTful
 
+REST is a software architectural style used in web services. It hasn’t been standardise per se which means that in
+practice it consists of a set of principles or rules designed to guide people building web services. Following those
+principles should in theory give the system some interesting properties like simplicity, scalability, reliability and more.
+RESTful is simply the term used to qualify web services that comply with the REST principles which are listed below:
+•	Uniform Interface
+•	Client – Server separation
+•	Statelessness
+•	Layered system
+•	Cacheability
+•	Code-on-demand (optional)
+
+I am not going to explain in great details each one of them as there are so many good resources out there. I quite like
+this article on Medium https://medium.com/extend/what-is-rest-a-simple-explanation-for-beginners-part-1-introduction-b4a072f8740f?
+especially the following one sentence definition:
+“REST stands for REpresentational State Transfer.
+It means when a RESTful API is called, the server will transfer to the client a representation of the state of the requested resource.”
+
+It shows that REST is about resources rather than services (like SOAP is for example). This is a key concept that relates to
+the Uniform Interface principle and when combined with the statelessness principle it explains why HTTP is the most widely
+used protocol to implement REST services.
+
 2) Explain the architectural style for the creation of a web API (client server communication, formatting language, etc.)
+
+When building a web API there are many things to consider. Based on my experience with web services, the ones I can think of straightaway are:
+•	What is the web API actually exposing? The answer to this question would influence the decision to build a RESTFul
+    service (if it is resource based) versus a different architectural style, service based for example.
+•	Protocols and security. Is HTTP good enough? Would HTTPS be better? Is a given protocol going to provide the desired latency?
+•	What format to use when sending the results back to the client? JSON is popular but maybe you also want to support HTML
+    if your clients want to be able to easily see the results in their browser. For big data sometimes CSV is convenient too
+    and some clients may still like the good old XML.
+•	Restricted access and authentication. Can anyone access the web API? If not how to restrict the access? What authentication
+    mechanism to use e.g. HTTP basic authentication when using HTTP?
 
 3) Explain HTTP requests types when used with RESTful web (GET, PUT, POST, etc.)
 
+The HTTP protocol supports multiple request methods. The most well-known and widely used ones are GET, PUT, POST and DELETE.
+Conveniently this is everything one needs to support CRUD operations. It is important to note that these methods define semantic
+operations and have a standardised format but how to use them is still down to the people implementing web services.
+GET is commonly used to retrieve data in a read-only mode (although there is nothing preventing anyone to use it in a different
+way which would be obviously quite bad as it would be very confusing for users and could suffer from security issues for example).
+PUT and POST are similar in the sense that they are used to create or update resources. The main differences are that
+PUT should be used when targeting a single resource in an idempotent way while POST can target a collection of resources
+and is not supposed to be idempotent. DELETE is fairly straightforward, meaning that it should be used to delete a specified resource.
+
 4) Explain the difference between stateless and stateful protocol. Which type of protocol is HTTP ?
+
+A stateless protocol doesn’t maintain any state between subsequent requests unlike a stateful protocol which can “remember”
+previous communications by storing a state. The period for which the state is maintained is usually referred to as a session.
+HTTP itself is stateless since requests are treated independently from each other’s by the server even when they come from
+the same client. Statelessness is nice because it makes everything simpler but in practice we still need bits and pieces
+to be stateful. For example HTTP is usually used over TCP which is a stateful protocol. Same with HTTPS and its famous
+SSL/TLS handshake necessary to create a secure session between the client and the server. Not to mention cookies which
+are way to work around the statelessness of HTTP.
 
 5) Explain the difference between a GET and a POST (like how are sent the parameters)
 
+As mentioned in question #3, GET and POST are semantically different. The first one should be used to retrieve resources
+while the second is about creating/updating resources. However both can pass parameters from the client to the server.
+GET is simply using a system of key value pairs directly passed via the URL. On the other side POST carries the parameters
+within the body of its request which also makes it more secure when passing sensitive information as the parameters won’t
+be directly visible in the URL.
+
 6) You can’t work out how to solve a coding problem. What do you do to find the answer?
+
+I would probably have a slightly different approach based on what the problem actually is e.g. optimise a complex system
+to make it perform better, fix a bug I can’t get to the bottom of or simply something I don’t how to do using a specific
+technology I am not familiar with. But in general I would go as follow:
+1.	Search by myself in order to solve my problem as it is using whatever resources I have at my disposal (books, internet etc).
+2.	Take a step back and try to identify exactly what is the exact problem or problems I am trying to solve in order to
+    potentially split it into smaller and simpler problems.
+3.	If after the previous step I am still stuck hopefully I can ask someone (e.g. colleague, forum) for help by submitting
+    them very clear and concise problem(s), for example a simple bug repro of the original more complex bug I was try to fix originally.
+4.	Loop back to step #1 involving more people as I may have missed something and giving up is not an option :).
