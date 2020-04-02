@@ -28,4 +28,19 @@ class WhatsWrong3 extends Actor {
   def handleResponse(r: String) = ??? // mutate internal state
 
   def queryAsyncServer(): Future[String] = ???
+
+  /**
+  * You actor could be close before the onComplete should be execute.
+   * So the handleResponse could not be updated every time so your internalState is not concistant.
+   *
+   * Actually i don't like to use mutable state and global ExecutionContext.
+   *
+   * You can use requestF.pipeTo() to notify the sender that your request then the handle is done
+   * case "a query" => {
+   * val requestF: Future[_] = queryAsyncServer().map(handleResponse)
+   *       requestF.pipeTo(sender())
+   * }
+   * }
+   *
+   */
 }

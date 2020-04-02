@@ -1,12 +1,35 @@
-
 1) Explain REST and RESTful
+REST(Representational State Transfer) is an http protocol, it was defined in 2000 by Roy Fielding, it’s not a standard but a set of recommendations and constraints:
+- client-server
+- stateless
+- cacheable
+- layered
+
+Restful is when the client and the server communicate using network but they didn't know each other model.
+They communic using URL, HTTP method, Headers, Body..
 
 2) Explain the architectural style for the creation of a web API (client server communication, formatting language, etc.)
+To make a web API you have to use HTTP requests type, and HTTP code for return.
+It's good to use JSON (a lot of company use this formatting language).
+You can use a loadBalancer to scale, then you have a server who listen http requests,
+process information and send the result in JSON for exemple using HTTP Code
 
 3) Explain HTTP requests types when used with RESTful web (GET, PUT, POST, etc.)
+For Restful web there is few things :
+- URL (you can use path param or query param)
+- method : GET (read) / PUT (update informations) / POST (create) / PATCH (update informations) / DELETE (delete) / OPTION (check option communication)
+- headers : Sending more information
+- body: for POST / PUT / PATCH you can add body with information that you want to create / update
 
 4) Explain the difference between stateless and stateful protocol. Which type of protocol is HTTP ?
+Statefull is a protocol who manage a state by store infromation from request. You can pass few informations like authentification or
+previous version of your state. Stateless can no remember the state, every resquest is a newone whitout any links from previous version.
+So http is a Stateless protocol
 
 5) Explain the difference between a GET and a POST (like how are sent the parameters)
+GET is set to retrieve information while POST create informations.
+GET sent information in the URL and headers, and POST can sent information in the URL, headers and in the body (it's the more important)
 
 6) You can’t work out how to solve a coding problem. What do you do to find the answer?
+- I will search on network
+- Then I wil ask to my collegue
