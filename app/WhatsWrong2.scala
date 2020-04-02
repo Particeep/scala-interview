@@ -37,4 +37,15 @@ object WhatsWrong2 {
       (ceo, enterprise)
     }
   }
+
+  /**
+   * We should never use .get.
+   * You have to check ceo_id and make a case if he is not set by returning Future[(None, None)] for exemple.
+   *
+   * Actually you use a for comprehension.
+   * EnterpriseDao.byCEOId will wait the result of CEODao.byId but you could make a parralele call to be more efficient
+   * because you doesn't use the result of first call to make the second call.
+   *
+   * In your case, the more easy to fix it, is to do not use future, because they juste add complexity in simple code.
+   */
 }
