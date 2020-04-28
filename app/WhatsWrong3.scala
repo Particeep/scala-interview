@@ -17,7 +17,14 @@ class WhatsWrong3 extends Actor {
 
   def receive: Receive = {
     case "a query" => {
-      val requestF: Future[String] = queryAsyncServer()
+      /**
+      * rerequestF instenciate in future will block
+      * or onComplete () to capture the result of a Future. Successfully and unsuccessfully 
+      */
+      val requestF = queryAsyncServer()
+
+      //val requestF: Future[String] = queryAsyncServer()
+
       requestF.onComplete {
         case Success(r) => handleResponse(r)
         case Failure(e) => e.printStackTrace()
@@ -25,7 +32,7 @@ class WhatsWrong3 extends Actor {
     }
   }
 
-  def handleResponse(r: String) = ??? // mutate internal state
+  def handleResponse(r: String) = _ // mutate internal state
 
-  def queryAsyncServer(): Future[String] = ???
+  def queryAsyncServer(): Future[String] = "https://test.com?"
 }
