@@ -1,0 +1,68 @@
+1-
+REST (Representational state transfer) est un style d'architecture logicielle
+qui exploite essentiellement la technologie et les protocoles existants du Web 
+dans des échanges de documents JSON avec un client via HTTP. 
+
+RESTful est généralement utilisé pour faire référence aux services Web implémentant une architecture REST (Tel qu'un API), 
+dans un autre sens ça décrit l'utilisation de l'architecture REST.
+
+
+2- Je dirai que le style de l'API Web a été très influencé par le concept architectural de REST 
+et partage bon nombre de ses contraintes telles que les URI, les représentations et le protocole HTTP. 
+Pour être plus technique dans l'explication de la création de l'API WEB, je le représenterai ainsi: 
+
+a- On a notre application mobile et une page web qui représentent nos différents clients faisant une requête soit
+DELETE, PUT, GET, ou encore POST sur le contrôleur de notre API.
+b- Les données arrivent au format XML sur le contrôleur API via la méthode Http pour le formatage et la vérification des données 
+avant d'interroger le serveur.
+c- Juste après vérification, le contrôleur utilise le lien serveur de l'API pour interroger le serveur avec une méthode HTTPS
+d- Ainsi l'application serveur retour un résultat en HTTP au contrôleur API et les données sont formatées en XML
+e- Bien après le contrôleur retourne à son tour le résultat promis au client en format JSON
+g- Enfin le client attendant une promesse, fait une asynchrone pour ainsi récupérer le tableau JSON et le lire selon le
+langage utilisé.
+
+
+3- Voici quelques explications des differentes méthodes des requêtes HTTP utilisés avec le web RESTful en ma connaissance les plus utilisées:
+	- GET: Méthode par défaut du client HTTP, elle sert à récupérer uniquement les données à partir d'un serveur. Il est
+		conseillé d'utiliser une ressource spécifique par exemple ID 12 du serveur pour éviter de récupérer toute une liste
+	- POST: Cette méthode stocke Les données dans le corps de la requête HTTP pour une mise à jour vers le serveur API, généralement
+		utilisé pour créer des ressources sans identifiant par exemple dans la soumission d'un formulaire web.
+	- PUT: Et une méthode se rapprochant de POST mais utilisant aussi une spécification du GET. Ainsi elle permet de créer ou
+		de mettre à jour une entité existante. Tout comme le GET il faudra transférer l'ID de la requete dans le LIVRE, pour
+		que le même résultat là où POST en créera plusieurs.
+	- DELETE: Supprime la ressource du serveur. Il faudra transmettre l'ID de la ressource à supprimer pour éviter de supprimer
+		  toutes les données de la base de données. 
+	- HEAD: C'est une requête sans effet secondaire sur le seveur qui renvoie uniquement les en-têtes de réponse. En d'autre
+		terme c'est un GET sans corps.
+	-CONNECT: Cette méthode établie une connexion réseau à une serveur via un proxy pour transmettre des requêtes HTTP en TCP.
+		Cette avec cette méthode qu'on obtient la fameuse réponse 200 (connexion établie).
+
+4- Il faut savoir que les protocoles sans état et avec état sont les protocoles réseau pour les serveurs Web et les navigateurs Web. 
+La différence du côté serveur en fonction de la manière d'enregistrer les informations de session. Pour cela je ne vais que citer 
+quelques points importants:
+- Sur le traitement d'une transaction: dans le protocole sans état aucune information n'est conservé tandis que 
+dans le protocole avec état, les informations sur l'État de cette dernière est conservée.
+- Sur le serveur: le protocole sans état n'a pas de dépendance étroite entre le client et le serveur, et en protocole avec état 
+il existe une dépendance étroite entre le client et le serveur. C'est pour cela que dans Stateless il n'a pas besoin du serveur 
+pour conserver les informations du serveur ou les détails de la session pour lui-même, et que dans l'état un serveur est indispensable 
+pour maintenir l'état actuel et les informations de session.
+- Sur les type:  les protocoles sans état sont de type réseau (HTTP, DNS, UDP) et les protocoles avec état sont de
+type transfert (FTP, Telnet).
+- Dans les transactions: dans les protocoles sans état la transaction est gérée très rapidement grâce au serveur tandis que dans 
+les protocoles avec état c'est le serveur qui est lent.
+
+HTTP est de type sans état (Stateless) ou Apatride.
+
+
+5- GET sert à récupérer des données envoyées via une URL sans danger ou modification des données 
+même si l'on fait plusieurs appels de la même requête.
+POST sert à écrire des données envoyées depuis le corps de la demande au lieu de l'URL, l'on l'a 
+qualifie de non sécurité parce qu'elle peut faire faire plusieurs demande d'écritures identiques.
+
+
+6- Quand je suis bloqué sur un problème de code, je vérifie d'abord si le langue utilisé est similaire à un autre langage que
+je maîtrise mieux. Après je demanderai à un collègue comment il aborderait le problème pour éviter d'aller trouver des solutions
+pas forcement optimales sur internet. Dans tout les cas, je serai obligé aussi de recourir à la documentation officielle des syntaxe
+pour mieux comprendre les fonctionnements. Et si ça persiste, il faudra mobiliser plus de monde du service pour avoir des opinions.
+Et si cela persiste, il e restera qu'à être plus créatif et à me dépasser, en mettant en place les logiques et mes principes du développement
+en comprenant et en améliorant les solutions les plus approximatives.

@@ -1,0 +1,65 @@
+1-
+REST (Representational state transfer) is a software architecture style
+which essentially exploits existing Web technology and protocols. 
+in exchanges of JSON documents with a client via HTTP. 
+
+RESTful is generally used to refer to Web services implementing a REST architecture (such as an API), 
+in another sense it describes the use of the REST architecture.
+
+
+2- I would say that the style of the Web API has been very influenced by the REST architectural concept. 
+and shares many of its constraints such as URIs, representations and the HTTP protocol. 
+To be more technical in explaining the creation of the WEB API, I will represent it as follows: 
+
+a- We have our mobile application and a web page that represents our different clients making a request to either
+DELETE, PUT, GET, or POST on our PLC controller.
+b- The data arrive in XML format on the API controller via the Http method for formatting and verification of the data. 
+before interrogating the server.
+c- Immediately after verification, the controller uses the API server link to query the server with an HTTPS method.
+d- Thus the server application returns a result in HTTP to the API controller and the data is formatted in XML.
+e- Long afterwards, the controller returns the result promised to the customer in JSON format.
+g- Finally the client waiting for a promise, makes an asynchronous asynchronous to retrieve the JSON chart and read it according to the
+language used.
+
+
+3- Here are some explanations of the different methods of HTTP requests used with the RESTful web to my knowledge the most used:
+	- GET: Default method of the HTTP client, it is used to retrieve only data from a server. It is
+		advised to use a specific resource e.g. server ID 12 to avoid retrieving an entire list
+	- POST: This method stores the data in the body of the HTTP request for an update to the API server, typically
+		used to create resources without an identifier, for example in the submission of a web form.
+	- PUT: And a method similar to POST but also using a GET specification. Thus it allows to create or
+		to update an existing entity. Like the TEP it will be necessary to transfer the request ID to the BOOK, in order to
+		that the same result where POST will create more than one.
+	- DELETE: Deletes the resource from the server. The ID of the resource to be deleted will have to be transmitted to avoid deleting
+		  all the data in the database. 
+	- HEAD: This is a request with no side-effects on the server that returns only the response headers. In other words
+		term it's a GET without a body.
+	-CONNECT: This method establishes a network connection to a server via a proxy to transmit HTTP requests over TCP.
+		With this method we get the famous 200 response (connection established).
+
+4- It is important to know that stateless and stateful protocols are the network protocols for Web servers and Web browsers. 
+The difference on the server side depends on the way the session information is recorded. For this I will only quote 
+a few important points:
+- On the processing of a transaction: in the stateless log no information is kept while 
+in the protocol with status, information on the status of the latter is retained.
+- On the server: the stateless protocol has no close dependency between the client and the server, and in the stateless protocol, the information on the state of the stateless protocol is kept. 
+there is a close dependency between client and server. That's why in Stateless it doesn't need the server. 
+to keep server information or session details for itself, and that a server is required in the state 
+to maintain current status and session information.
+- On type: stateless protocols are network type (HTTP, DNS, UDP) and stateful protocols are
+transfer type (FTP, Telnet).
+- In transactions: in stateless protocols the transaction is managed very quickly by the server, while in 
+stateful protocols are the server that is slow.
+
+HTTP is stateless or stateless.
+
+
+5- GET is used to retrieve data sent via a URL without danger or modification of the data 
+even if you make multiple calls on the same request.
+POST is used to write data sent from the body of the request instead of the URL, one has it 
+qualifies as non-secure because it can make multiple requests for identical postings.
+
+
+6- When I'm stuck on a code problem, I first check if the language used is similar to another language than
+I'm in better control. Then I will ask a colleague how he would approach the problem to avoid going to find solutions.
+not necessarily optimal on the internet. In any case, I'll have to 
