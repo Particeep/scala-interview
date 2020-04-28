@@ -26,8 +26,8 @@ object FireActor extends BasicActor {
     val system = ActorSystem("Actor System")
     val basic_actor = system.actorOf(Props[BasicActor], name = "basic actor")
   }
-
+  fireActor()
   // send the actor two messages
-    BasicActor ! "Hello"
-    BasicActor ! "What your name ?"
+  BasicActor ! "Hello"
+  BasicActor ! "What your name ?"
 }
