@@ -34,5 +34,6 @@ public/i18n/
 *npm-debug.log*
 angular2/debug.log
 angular2/package-lock.json
+.metals/
 
 public/css/theme/
