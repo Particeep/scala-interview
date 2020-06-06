@@ -1,4 +1,4 @@
-// package com.particeep.test
+package com.particeep.test
 
 object WhatsWrong1 {
 
@@ -16,13 +16,12 @@ object WhatsWrong1 {
     println(Supporter.city); //What does this print ? => It prints 'Paris'
     println(Supporter.support); //What does this print => It prints 'Ici c'est null !'
     /**
-      why? => this is cause by the strict evaluation (evaluation at compile time)
+      why? => this is caused by the strict evaluation (evaluation at compile time)
               of 'support'. In the abscence of initialization of 'city' in 'Interface',
               its value is set to null
 
       How to fix it ? => the best solution would be to declare 'support' as a lazy val
-                         so that it will take 'city' value at execution time ("Paris")
+                         so that it will take the overriden 'city' value at execution time ("Paris")
     */
-
   }
 }

@@ -21,7 +21,7 @@ object MapYourMap {
           values += e1._2;
         }
       }
-      //if value with same key exists
+      //if value with same key (wich corresponds to value in the 2nd map) exists
       if (!result.keys.exists(_ == e2._2)) {
         result(e2._2) = result(e2._2) ++ values.toList;
       }
