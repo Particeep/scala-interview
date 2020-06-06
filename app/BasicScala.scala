@@ -17,13 +17,25 @@ object BasicScala {
     * input  : Map()
     * output : ""
     */
-  def encodeParamsInUrl(params: Map[String, String]): String = ???
+  def encodeParamsInUrl(params: Map[String, String]): String = {
+    val str = new StringBuilder("");
+    if (params.isEmpty) {
+      return str.toString();
+    }
+
+    str.append("?");
+    params.foreach((e => str.append("&" + e._1 + "=" + e._2)));
+    str.deleteCharAt(1);
+    return str.toString();
+  }
 
 
   /**
     * Test if a String is an email
     */
-  def isEmail(maybeEmail: String): Boolean = ???
+  def isEmail(maybeEmail: String): Boolean = {
+    """(\w+)@([\w\.]+)""".r.unapplySeq(maybeEmail).isDefined;
+  }
 
 
   /**
@@ -37,7 +49,26 @@ object BasicScala {
     * input : (i = 99, n = 38997)
     * output : 1723793299
     */
-  def power(i:Int, n:Int):Int = ???
+  def power(i:Int, n:Int):Int = {
+    if (n == 0) {
+      return 1;
+    }
+    else if (n == 1) {
+      return i;
+    }
+    else {
+      return i * power(i, n - 1);
+    }
+  }
 
-
+  /** TEST
+  * def main(args: Array[String]): Unit = {
+  *   println(power(2, 3));
+  *   println(isEmail("test@gmail.com"));
+  *   println(isEmail("te st@gmail.com"));
+  *   val params = Map("sort_by" -> "name", "order_by" -> "asc", "user_id" -> "12");
+  *   println(encodeParamsInUrl(params));
+  *   println(encodeParamsInUrl(Map()));
+  * }
+  */
 }

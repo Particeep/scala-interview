@@ -8,7 +8,9 @@ import scala.concurrent.ExecutionContext.Implicits.global
 
 /**
  * Do you see anything that could lead to potential problems ?
+ * => the case where where we receive something other than "a query" is not treated
  * What would you do to fix it ?
+ * => add default case : case _ => println("not a query")
  * Do not mind about the not implemented code
  */
 class WhatsWrong3 extends Actor {
