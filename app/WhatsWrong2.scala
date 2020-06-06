@@ -31,8 +31,8 @@ object WhatsWrong2 {
 
   //Review this code. What could be done better ? How would you do it ?
   /**
-  => i documented myself on 'For comprehensions' and the 'Futures' notion
-     but i have no clue on what can be done to improve this code
+  * => i documented myself on 'For comprehensions' and the 'Futures' notion
+  *   but i have no clue on what can be done to improve this code
   */
   def getCEOAndEnterprise(ceo_id: Option[String]): Future[(Option[CEO], Option[Enterprise])] = {
     for {
