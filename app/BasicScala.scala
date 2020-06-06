@@ -61,14 +61,14 @@ object BasicScala {
     }
   }
 
-
-  def main(args: Array[String]): Unit = {
-    println(power(2, 3));
-    println(isEmail("test@gmail.com"));
-    println(isEmail("te st@gmail.com"));
-
-    val params = Map("sort_by" -> "name", "order_by" -> "asc", "user_id" -> "12");
-    println(encodeParamsInUrl(params));
-    println(encodeParamsInUrl(Map()));
-  }
+  /** TEST
+  * def main(args: Array[String]): Unit = {
+  *   println(power(2, 3));
+  *   println(isEmail("test@gmail.com"));
+  *   println(isEmail("te st@gmail.com"));
+  *   val params = Map("sort_by" -> "name", "order_by" -> "asc", "user_id" -> "12");
+  *   println(encodeParamsInUrl(params));
+  *   println(encodeParamsInUrl(Map()));
+  * }
+  */
 }

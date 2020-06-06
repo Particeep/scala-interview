@@ -12,6 +12,7 @@ object WhatsWrong1 {
     override val city = "Paris"
   }
 
+  //TEST
   def main(args: Array[String]): Unit = {
     println(Supporter.city); //What does this print ? => It prints 'Paris'
     println(Supporter.support); //What does this print => It prints 'Ici c'est null !'

@@ -43,9 +43,11 @@ object WhatsWrong2 {
     }
   }
 
-  def main(args: Array[String]): Unit = {
-    val id = Option[String]("2");
-    val future = getCEOAndEnterprise(id);
-    Await.result(future.map(e => println(e)), Duration.Inf);
-  }
+  /** TEST
+  * def main(args: Array[String]): Unit = {
+  *   val id = Option[String]("2");
+  *   val future = getCEOAndEnterprise(id);
+  *   Await.result(future.map(e => println(e)), Duration.Inf);
+  * }
+  */
 }
