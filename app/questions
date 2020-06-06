@@ -1,15 +1,75 @@
 
 1) Explain REST and RESTful
-REST which stands for Representational State Transfer, is an architectural
-pattern for the creation of web services. Therefore, RESTful is the service that
-implements that pattern.
+    REST which stands for Representational State Transfer, is an architectural
+    pattern for the creation of web services.
+    A service, which complies with the REST constraints, is said to be RESTful.
+    An API is said to be RESTful when it respects the REST architectural constraints
+    and the 4 levels of THE RICHARDSON MATURITY MODEL which are defined as follows:
+
+                            /\
+                           /  \
+    HYPERMEDIA            /  3 \   level 3: Hypertext as the engine of application state
+                         /______\
+                        /        \
+    HTTP               /     2    \  level 2: Interactions with URI resources using different HTTP verbs
+                      /____________\
+                     /              \
+    URI             /        1       \   level 1: Multiple URI based resources and single verbs
+                   /__________________\
+                  /                    \
+    POX Swamp    /           0          \   level 0: Plain Old XML
+                /________________________\
+
+    And REST architectural constraints are:
+    1. Uniform interface
+    2. Client-Server
+    3. Stateless
+    4. Cacheable
+    5. Layered System
+    6. Code on demand (optional)
 
 2) Explain the architectural style for the creation of a web API (client server communication, formatting language, etc.)
+     The architectural style for the creation of a web API is built on 4 rules:
+        - Use simple URI for services
+        - Use HTTP for client-server communication
+        - Use XML or JSON as formatting language
+        - Stateless communication
 
 3) Explain HTTP requests types when used with RESTful web (GET, PUT, POST, etc.)
+    HTTP requests types, also called HTTP methods or verbs, are defined as follows:
+    - GET: request data from a resource
+    - PUT: send data to a server to create/update a resource
+    - POST: send data to a server to create/update a resource
+    - DELETE: deletes data from the specified resource
+    - PATCH: updates partially a ressource
+    - HEAD: same as GET but with no response body
+    - OPTION: gives information about communication options
 
 4) Explain the difference between stateless and stateful protocol. Which type of protocol is HTTP ?
+    - Stateless: The server will not store any information about the latest HTTP
+                request made by the client. It will treat every request as a new one.
+    - Stateful: The server will store any information about the latest HTTP
+                request made by the client. The client can retrieve a previous
+                transaction with the server.
+    - HTTP is a stateless protocol
 
 5) Explain the difference between a GET and a POST (like how are sent the parameters)
+    the main differences are as follows
+     _____________________________________________________________________
+    | VERB | Request body | Response body | Safe | Idempotent | Cacheable |
+    |______|______________|_______________|______|____________|___________|
+    | GET  |   optional   |       yes     |  no  |     yes    |    yes    |
+    |______|______________|_______________|______|____________|___________|
+    | POST |      yes     |       yes     |  yes |     no     |    no     |
+    |______|______________|_______________|______|____________|___________|
+
+    when it comes to the way the parameters are sent. the GET method paramaters
+    are usually sent through the URL, while the post request send data in the request body
+    of the HTTP request. Which makes the GET less safe to use because parameters
+    can be stored in the browser history.
 
 6) You can’t work out how to solve a coding problem. What do you do to find the answer?
+   In this order
+    1- search for solutions on the net
+    2- ask for the help of a person in my entourage that might have come across the same problem
+    3- Try to rework my code in order to tackle the problem from another angle
