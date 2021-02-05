@@ -18,7 +18,7 @@ object BasicScala {
     * output : ""
     */
   def encodeParamsInUrl(params: Map[String, String]): String = 
-    params.foldLeft("")( (acc, kv) => acc + "?"+ kv._1 + "=" + kv._2 +"&").dropRight(1)
+    params.foldLeft("?")( (acc, kv) => acc + kv._1 + "=" + kv._2 +"&").dropRight(1)
     //there is an additional '&' at the end that i have to delete with dropRight(1)
 
   /**
