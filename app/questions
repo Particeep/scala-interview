@@ -1,12 +1,33 @@
 
 1) Explain REST and RESTful
+REST is a style of software architecture, while RESTful refers to the web services implementation of this kind of architecture.
 
 2) Explain the architectural style for the creation of a web API (client server communication, formatting language, etc.)
+The Client requests a resource, and the server provides it, web API is a standard to make the communication between
+them easier, the data in the RESTful web service is mainly represented in XML or JSON form.
 
 3) Explain HTTP requests types when used with RESTful web (GET, PUT, POST, etc.)
 
+GET : is used for retrieving information from the web service.
+
+POST : is used to update information. 
+
+PUT : is used to create information.
+
+DELETE : is used to delete some data from the web server.
+
 4) Explain the difference between stateless and stateful protocol. Which type of protocol is HTTP ?
+in the case of stateless protocol the server processes requests based only in the information
+of the current request and do not rely on information from earlier requests, while in stateful protocol
+the server needs to keep information about each request and process them according
+to the earlier requests, HTTP is a stateless protocol.
 
 5) Explain the difference between a GET and a POST (like how are sent the parameters)
+they are two different types of HTTP requests, GET is usually used to retrieve data, and POST is used to
+insert/update data, for GET requests the parameters are sent along with the URI as a query string (see encodeParamsInUrl in BasicScala.scala)
+, while POST requests parameters are sent  in the request body with a specific content type (JSON for exemple). 
 
 6) You can’t work out how to solve a coding problem. What do you do to find the answer?
+I would do a research about the subject to fully understand the problem, then I would break it down into subproblems
+, and try to solve each one of them (if necessary search the internet for a solution even for a similar problem),
+and I would ask help from my collaborators at work.
