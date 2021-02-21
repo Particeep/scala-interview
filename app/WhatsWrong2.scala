@@ -29,6 +29,9 @@ object EnterpriseDao {
 object WhatsWrong2 {
 
   //Review this code. What could be done better ? How would you do it ?
+  //if the ceo_id Option is None, the method get would throw an exception (java.util.NoSuchElementException: None.get)
+  //to fix this we should use instead the method getOrElse(default) which returns the default value in the case where ceo_id Option is None.
+
   def getCEOAndEnterprise(ceo_id: Option[String]): Future[(Option[CEO], Option[Enterprise])] = {
     for {
       ceo <- CEODao.byId(ceo_id.get)
