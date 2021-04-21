@@ -37,4 +37,24 @@ object WhatsWrong2 {
       (ceo, enterprise)
     }
   }
+
+  /*
+    1. I don't really get why the parameter is an option:
+     this id is either present or absent from the lists, but not the id itself.
+    2. The returned type could be refactored as a Future of Option of a pair (CEO, Enterprise)
+      that could also be defined as a type alias
+   */
+  type CEOAndEnterprise = (CEO, Enterprise)
+
+  def getCEOAndEnterprise2(ceo_id: String): Future[Option[CEOAndEnterprise]] = {
+    for {
+      ceo <- CEODao.byId(ceo_id)
+      enterprise <- EnterpriseDao.byCEOId(ceo_id)
+    } yield (ceo, enterprise) match {
+      case (Some(ceo), Some(enterprise)) =>
+        Some((ceo, enterprise))
+      case (_, _) =>
+        None
+    }
+  }
 }

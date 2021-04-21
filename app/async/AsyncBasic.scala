@@ -1,8 +1,7 @@
 package com.particeep.test.async
 
-import scala.concurrent.Future
-
 import scala.concurrent.ExecutionContext.Implicits.global
+import scala.concurrent.Future
 
 /**
  * You have 2 webservices, we want to compute the sum of the 2 webservice call.
@@ -14,7 +13,27 @@ import scala.concurrent.ExecutionContext.Implicits.global
  */
 object AsyncBasic {
 
-  def compute(id: String) = ???
+  def compute(id: String): Future[Int] = {
+    val result = for {
+      result1 <- Webservice1
+        .call(id)
+        .flatMap {
+          case Some(value1) => Future.successful(value1)
+          case None => throw ValueNotFoundException(s"Error when retrieving id=$id from Webservice1")
+        }
+      result2 <- Webservice2
+        .call(id)
+        .map(_.toOption)
+        .flatMap {
+          case Some(value2) => Future.successful(value2)
+          case None =>  throw ValueNotFoundException(s"Error when retrieving id=$id form Webservice2")
+        }
+    } yield result1 + result2
+
+    result.recoverWith {
+      case t: Throwable => Future.failed(t)
+    }
+  }
 
 }
 
@@ -44,3 +63,5 @@ object Webservice2 {
     }
   }
 }
+
+final case class ValueNotFoundException(msg: String) extends RuntimeException(msg)
