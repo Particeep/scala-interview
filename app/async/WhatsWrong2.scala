@@ -29,6 +29,14 @@ object EnterpriseDao {
 object WhatsWrong2 {
 
   //Review this code. What could be done better ? How would you do it ?
+
+  /*FOR ME:
+
+  ceo_id.get is an obvious None.get generator :-)
+  I'll just add option control code and keep the function signature the closest as intended
+
+   */
+/*
   def getCEOAndEnterprise(ceo_id: Option[String]): Future[(Option[CEO], Option[Enterprise])] = {
     for {
       ceo        <- CEODao.byId(ceo_id.get)
@@ -37,4 +45,18 @@ object WhatsWrong2 {
       (ceo, enterprise)
     }
   }
+*/
+
+  def getCEOAndEnterprise(ceo_id: Option[String]): Future[(Option[CEO], Option[Enterprise])] = {
+    if (ceo_id.isDefined) {
+      for {
+        ceo <- CEODao.byId(ceo_id.get)
+        enterprise <- EnterpriseDao.byCEOId(ceo_id.get)
+      } yield {
+        (ceo, enterprise)
+      }
+    } else Future.failed(new Exception("Empty ceo_id!"))
+  }
+
+
 }

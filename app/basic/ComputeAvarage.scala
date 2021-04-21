@@ -7,6 +7,7 @@ package com.particeep.test.basic
  */
 object ComputeAvarage {
 
-  def average(l: List[Double]) = ???
+  def average(l: List[Double]) =
+    l.sum/l.size
 
 }

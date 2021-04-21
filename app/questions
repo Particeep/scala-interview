@@ -1,11 +1,34 @@
 
 1) Explain REST
 
+REST arrived in the early 2000. For me The main take away is that REST gave a solution to the scalability limits of server side code maintening sessions.
+By defining clearly architectural design principle :
+    - leveraging HTTP for URI and verbs for quite natural representation of objects
+    - strict usage of client and servers
+    - transfert of state push to the network. No server memory. all states are "on network". This is the main advantage: any server become interchangeable. Then open the way to load balancing statelessly, scaling horizontaly
+
 2) Explain the architectural style for the creation of a web API (client server communication, formatting language, number of servers, etc.)
 
+Web API are "contract" between client and server over HTTP(S). Exchange language depend on :
+    the existing architecture api versioning can be challenging
+    trends (XML -> JSON for example)
+    infrastructure changes with time: From server, to servers, to containers
+    scalability is mature now using docker/kubernetes
+
 3) What are the best practices when deploying an application in the cloud
+
+I would say that the more tools/concept you know, then the right one you will combine when the moment comes.
+My stack of choice :
+    - A good language (SCALA) + simple test framework
+    - docker is a minimum
+    - simple CI/CD depending of scale of project
+    - team work
 
 4) What are your best strength : infra ? DB ? web ?
 Give us detail about it
 
+- I come from infra. Thus knowing the worth of developpers (trying to improve self too ;-))
+
 5) Among all the projects you have worked on. Which architecture do you enjoy the most? explain why ?
+
+Depending of the "size of project" but clearly event driven microservices with mix RESTFull for "read" parts

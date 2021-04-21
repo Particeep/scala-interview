@@ -1,8 +1,8 @@
 package com.particeep.test.async
 
 import scala.concurrent.Future
-
 import scala.concurrent.ExecutionContext.Implicits.global
+import scala.util.{Failure, Success}
 
 /**
  * You have 2 webservices, we want to compute the sum of the 2 webservice call.
@@ -14,8 +14,26 @@ import scala.concurrent.ExecutionContext.Implicits.global
  */
 object AsyncBasic {
 
-  def compute(id: String) = ???
+  def compute(id: String): Future[Int] = {
 
+    val fResult = for {
+      ws1 <- Webservice1.call(id).flatMap {
+        case None => Future.failed(new Exception("WS1 failed"))
+        case Some(value) => Future.successful(value)
+      }
+      ws2 <- Webservice2.call(id).map(_.toOption).flatMap {
+        case None => Future.failed(new Exception("WS2 failed"))
+        case Some(value) => Future.successful(value)
+      }
+    } yield ws1 + ws2
+
+    fResult
+
+    /*   fResult.onComplete {
+      case Failure(exception) => { println(s"Exception: $exception"); None }
+      case Success(value) => { println(Some(value)); Some(value) }
+    }*/
+  }
 }
 
 object Webservice1 {
