@@ -16,12 +16,17 @@ object BasicScala {
    * input  : Map()
    * output : ""
    */
-  def encodeParamsInUrl(params: Map[String, String]): String = ???
+  def encodeParamsInUrl(params: Map[String, String]): String = {
+    if (params.isEmpty) "" else params.map {case (p,v) => { s"$p=$v" } }.mkString("?","&","")
+  }
 
   /**
    * Test if a String is an email
    */
-  def isEmail(maybeEmail: String): Boolean = ???
+  def isEmail(maybeEmail: String): Boolean = {
+    val emailRegex = """.+\@.+\..+""".r
+    emailRegex.pattern.matcher(maybeEmail).matches()
+  }
 
   /**
    * Compute i ^ n
@@ -34,6 +39,15 @@ object BasicScala {
    * input : (i = 99, n = 38997)
    * output : 1723793299
    */
-  def power(i: Int, n: Int): Int = ???
+
+  // Naive implementation with INT. for i=99 n=38997 Ints are largely to small. For large value we should use BigInt and tail rec implementation if necessary.
+
+  def power(i: Int, n: Int): Int = {
+    (i,n) match {
+      case (0,_) => 0
+      case (_,0) => 1
+      case (i,n) => i*(power(i,n-1))
+    }
+  }
 
 }

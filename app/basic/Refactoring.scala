@@ -12,7 +12,9 @@ object Refactoring {
     category: String
   )
 
-  def getCategories(files: List[File]): List[String] = {
+  // Original complexity O(n) n number of files
+
+ /* def getCategories(files: List[File]): List[String] = {
     val categories: List[String] = List()
 
     if(files != null) {
@@ -24,5 +26,10 @@ object Refactoring {
     }
 
     return categories
+  }*/
+
+  def getCategories(files: List[File]): List[String] = {
+    files.map(_.category).distinct
   }
+
 }
