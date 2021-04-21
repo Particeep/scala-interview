@@ -1,7 +1,7 @@
 package com.particeep.test.basic
 
 /**
- * What is the complexity of the function ?
+ * What is the complexity of the function ? O(n²)
  *
  * Refactor it to be a better function
  */
@@ -23,6 +23,10 @@ object Refactoring {
       }
     }
 
-    return categories
+    categories
   }
+
+  def getCategoriesOpt(files: List[File]): List[String] =
+    files.map(_.category).distinct
+
 }

@@ -5,8 +5,8 @@ package com.particeep.test.basic
  *
  * ex : [1, 10, 16] -> 9
  */
-object ComputeAvarage {
+object ComputeAverage {
 
-  def average(l: List[Double]) = ???
-
+  def average(l: List[Double]) =
+    l.reduce(_ + _) / l.size // <=> l.sum/l.size
 }

@@ -1,11 +1,38 @@
 
 1) Explain REST
+    REST stands for REpresentational State Transfer.
+    It defines the way Clients and Servers communicate data between each other, or more specifically a State of a specific Resource.
+    Servers expose APIs to Clients.
+    Clients use them through endpoints to make Requests and get as a result a Response from the Server that contains information about a specific Resource.
 
 2) Explain the architectural style for the creation of a web API (client server communication, formatting language, number of servers, etc.)
+    => Servers expose APIs to Clients.
+    Clients should make requests based on simple operation: GET/POST/PUT/PATCH/DELETE.
+    Clients and Servers should only agree to a common interface. The way this interface is implemented should only be a serverside concern.
+    Thus, Clients and Servers are completely independent, except for this commonly used interface.
+    From the Client point of view, data should be serialized when making a Request to the Server, and deserialized when receiving a Response from the Server.
+    From the Server point of view, data should be deserialized when receiving a Request from the Client, and serialized when sending a Response to the Client.
+    I dont' really understand the number of servers questions: since Monolith are being more and more deprecated, Web API should be easily scalable (up/down scale)
+    Servers should be organized between different layers, each layer having a proper responsibility (http/routes, services, models, db/repositories)
 
 3) What are the best practices when deploying an application in the cloud
+    - First of all, in order to be deployed in the cloud, the application should be containerized.
+    This allows to keep track of all versions that have been deployed over time, and it is a good step forward to Continuous Integration/Continuous Delivery
+    - Concerning CI/CD, after each commit, different stages or layers should be defined, that could be automatically or manually triggered, in order to build the application, runs some tests (integration, e2e),
+    before deploying the application.
+    - There should be at least 3 distinct environments where the application runs: production, development, and staging/test
+    - The common configuration variables should be defined as environment variables that should also be defined from the CI/CD platform if possible. That allows to automatically point to the correct
+    dbs or endpoints depending on the development environment.
+    - A dedicated DevOps/SRE team should be responsible for handling all the issues concerning cloud management (load balancing, pods, ...)
 
 4) What are your best strength : infra ? DB ? web ?
-Give us detail about it
+-Give us detail about it
+    I would say that I have a good overall understanding of the main concepts of System Design (architecture, API design, microservices),
+    but also the "developer facing side" of DevOps (in other word: Docker)
 
 5) Among all the projects you have worked on. Which architecture do you enjoy the most? explain why ?
+    In terms of pure architecture, I really enjoyed setting up a realtime event processing architecture.
+    It allows me to have a close look on how data navigates between components to components, through data pipeline (kafka), with a main component backed by Actors to orchestrate the whole data flow.
+    This component consumes events from a Kafka broker where data are pushed in from different microservices in response of APIs calls that are made by this orchestrator component when processing events consumed from the kafka broker,
+    depending on the state of the actor.
+    But technically, I also worked on projects involving Akka Streams, and I found them particularly stimulating, because the use of graphs allows to translate very closely all the architectural ideas in a very comprehensive manner.

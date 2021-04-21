@@ -1,5 +1,7 @@
 name := """scala-interview"""
 
+lazy val akkaVersion = "2.6.8"
+
 lazy val commonSettings = Seq(
   organization := "com.particeep",
   version := "1.1.0",
@@ -22,5 +24,7 @@ lazy val deps_tests = Seq(
   "org.scalatestplus.play"  %% "scalatestplus-play" % "5.1.0"   % Test withSources () excludeAll (ExclusionRule(
     organization = "org.mockito"
   )),
-  "com.opentable.components" % "otj-pg-embedded"    % "0.13.3"  % Test withSources ()
+  "com.opentable.components" % "otj-pg-embedded"    % "0.13.3"  % Test withSources (),
+
+  "com.typesafe.akka" %% "akka-testkit" % akkaVersion % Test
 )
