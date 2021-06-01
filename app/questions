@@ -1,11 +1,20 @@
 
 1) Explain REST
+A stateless web architecture based on HTTP methods that allows many entities to exchange json, xml ...
 
 2) Explain the architectural style for the creation of a web API (client server communication, formatting language, number of servers, etc.)
+1- fix a pattern (standards) for all apis like for example https://github.com/WhiteHouse/api-standards
+2- Fix Http response code that will be used (for example 404 if the element not found or 200 with an error message)
+3- Fix a body style to return, document it using swagger and expose it
+
 
 3) What are the best practices when deploying an application in the cloud
+Automation, Secure secrets, minimize the package or docker
 
 4) What are your best strength : infra ? DB ? web ?
 Give us detail about it
+Web and DB: I worked more than 3 years developing and maintaining services which helped me to gain more experience in developing API and querying Databases
+Infra: I have a good experience in AWS cloud provider and many other framework and languages that we used to automate deployments
 
 5) Among all the projects you have worked on. Which architecture do you enjoy the most? explain why ?
+Microservices, Easy to understand and maintain

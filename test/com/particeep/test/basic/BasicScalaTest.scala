@@ -1,7 +1,5 @@
 package com.particeep.test.basic
 
-import play.api.i18n.Lang
-
 import org.scalatestplus.play.PlaySpec
 
 class BasicScalaTest extends PlaySpec {
