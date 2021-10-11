@@ -1,11 +1,44 @@
 
 1) Explain REST
 
+REST is a set of architectural constraints that permits a client to emit a request to a RESTFul API.
+This API sends back the representational state of a ressource to the client.
+This representation is sent by HTTP in JSON mainly but it could be XML or raw text as well.
+
 2) Explain the architectural style for the creation of a web API (client server communication, formatting language, number of servers, etc.)
 
+A RESTFul API must meets the following needs :
+
+* a client server architecture composed of clients, serveurs and ressources with  HTTP rsquests
+* stateless communications
+* ability of caching data to minimize client server interactions
+* the formatting language could be JSON, HTML, raw text or even generated code sent from the server to the client to enhance the client behaviour
+* the number of servers could be infinite in order to scale up and down according to the workload
+* the server could be loadbalanced and the databases could be sharder
+
 3) What are the best practices when deploying an application in the cloud
+
+The best practices when deploying an application in the cloud are :
+
+* use as much as possible of environment variable (for the secrets in instance)
+* automate as much as possible deployments (with Jenkins for example) (continous
+* automate tests with a tool of Continuous Integration
+* monitor and log status
+* keep security in mind as much as possible
+* use blue green deployment pattern
+* use of docker with docker-compose minimum or k8s
 
 4) What are your best strength : infra ? DB ? web ?
 Give us detail about it
 
-5) Among all the projects you have worked on. Which architecture do you enjoy the most? explain why ?
+My best strength in backend development is to provide the best solutions to solve complex problems.
+When I know the business of an enterprise, I have a transversal view to make the evolution if necessary and I can hunt and fix complex bugs.
+I also have the cap of Integration tester.
+
+5) Among all the projects you have worked on. Which architecture do you enjoy the most ? explain why ?
+The architecture I enjoyed the most was a microservice architecture orchestrated with an Order Manager following the Command Pattern.
+The command Pattern is a good way to provide a clear vision of what should be done and what is done.
+I like the microservices architecture because of its flexibility and easy to develop independently.
+It allows to clearly separate roles between different services and with the combination of an Order Manager,
+the CQRS could be respected : GET on the microservices via HTTP whereas all delete, update, add operations are processed 
+via Order Manager distributed via pubsub
