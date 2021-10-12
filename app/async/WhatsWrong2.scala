@@ -29,12 +29,18 @@ object EnterpriseDao {
 object WhatsWrong2 {
 
   //Review this code. What could be done better ? How would you do it ?
+  // No exception handle if ceo_id = None
+  // So I prefer to return Future of (None, None) rather than an exception, because it(exception) should be use
+  // only for error ; clearly, ceo_id = None is allowed in parameter, so I won't thrown an exception
   def getCEOAndEnterprise(ceo_id: Option[String]): Future[(Option[CEO], Option[Enterprise])] = {
-    for {
-      ceo        <- CEODao.byId(ceo_id.get)
-      enterprise <- EnterpriseDao.byCEOId(ceo_id.get)
-    } yield {
-      (ceo, enterprise)
+    ceo_id match {
+      case None => Future.successful(None, None)
+      case _    => for {
+          ceo        <- CEODao.byId(ceo_id.get)
+          enterprise <- EnterpriseDao.byCEOId(ceo_id.get)
+        } yield {
+          (ceo, enterprise)
+        }
     }
   }
 }

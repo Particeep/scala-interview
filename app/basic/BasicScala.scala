@@ -1,5 +1,8 @@
 package com.particeep.test.basic
 
+import scala.annotation.tailrec
+
+
 /**
  * This is basic language questions so don't use external library or build in function
  */
@@ -16,12 +19,20 @@ object BasicScala {
    * input  : Map()
    * output : ""
    */
-  def encodeParamsInUrl(params: Map[String, String]): String = ???
+  def encodeParamsInUrl(params: Map[String, String]): String = {
+    if (params.nonEmpty)
+      params.map(v=> v._1 + "=" + v._2).mkString("?","&","")
+    else
+      ""
+  }
 
   /**
    * Test if a String is an email
    */
-  def isEmail(maybeEmail: String): Boolean = ???
+  def isEmail(maybeEmail: String): Boolean = {
+    val emailValidator = "(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$)".r
+    emailValidator.pattern.matcher(maybeEmail).matches()
+  }
 
   /**
    * Compute i ^ n
@@ -34,6 +45,14 @@ object BasicScala {
    * input : (i = 99, n = 38997)
    * output : 1723793299
    */
-  def power(i: Int, n: Int): Int = ???
 
+    def power(i: Int, n: Int): Int = {
+      powerAcc(i,n-1,i)
+    }
+    @tailrec
+    def powerAcc(i:Int,n:Int, acc : Int): Int = {
+      if (n==0) acc
+        else
+    powerAcc(i, n - 1, acc * i)
+    }
 }

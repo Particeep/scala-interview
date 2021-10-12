@@ -8,7 +8,15 @@ import akka.actor.{ Actor, ActorSystem, Props }
  * When receiving a message that says "Hello", BasicActor must print "Hello there."
  * It must print "What?" when receiving any other message
  */
-class BasicActor {}
+class BasicActor  extends Actor {
+  def receive: Receive = {
+    case "Hello" => print("Hello there.")
+    case _ => print("What?")
+  }
+
+  def print(msg:String) =
+    println(msg)
+}
 
 object FireActor {
 
@@ -18,7 +26,9 @@ object FireActor {
    * Make it print "Hello there." and "What?"
    */
   def fireActor(): Unit = {
-    //    val system = ActorSystem("Actor System")
-    //    val basic_actor = system.actorOf(Props[BasicActor], name = "basic actor")
+        val system = ActorSystem("ActorSystem")
+        val basicActor = system.actorOf(Props[BasicActor], name = "basicActor")
+        basicActor ! "Hello"
+        basicActor ! "How are you?"
   }
 }

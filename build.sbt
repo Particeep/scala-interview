@@ -1,5 +1,9 @@
 name := """scala-interview"""
-
+val AkkaVersion = "2.6.8"
+libraryDependencies += "com.typesafe.akka" %% "akka-stream" % AkkaVersion
+libraryDependencies += "org.scalatest" %% "scalatest" % "3.2.10"
+libraryDependencies += "org.scalatest" %% "scalatest" % "3.2.10" % "test"
+libraryDependencies += "com.typesafe.akka" %% "akka-testkit" % AkkaVersion % Test
 lazy val commonSettings = Seq(
   organization := "com.particeep",
   version := "1.1.0",
