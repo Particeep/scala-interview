@@ -14,8 +14,17 @@ import scala.concurrent.ExecutionContext.Implicits.global
  */
 object AsyncBasic {
 
-  def compute(id: String) = ???
-
+  def compute(id: String) : Future[Int] =
+    for {
+      ws1 <- Webservice1.call(id).flatMap {
+        case None => Future.failed(new Exception("Compute failed for Webservice 1"))
+        case a:Option[Int] => Future.successful(a.get)
+      }
+      ws2 <- Webservice2.call(id).flatMap{
+        case Left(_) => Future.failed(new  Exception("Compute failed for Webservice 2"))
+        case Right(value) => Future.successful(value)
+      }
+    }yield ws1+ws2
 }
 
 object Webservice1 {

@@ -1,11 +1,26 @@
 
 1) Explain REST
+REST (REpresentational State Transfer) is an architectural style defined by a bunch of constraints, in order to simplify communication between computer systems on the web(HTTP protocol).
 
 2) Explain the architectural style for the creation of a web API (client server communication, formatting language, number of servers, etc.)
+    A Web API should follow those rules :
+    *   use HTTP-protocol communication between client/server
+    *   requests sent are a representation of the resources, so the formatting language can be HTML, XML, JSON, etc.
+    *   be scalable (dockers)
+    *   be loadbalanced
 
+    The number of servers is potentially less important (due to loadbalanced,scalability) than high availability.
 3) What are the best practices when deploying an application in the cloud
+    To me, the best practices should be :
+    *   security : control and monitoring authentication & authorization
+    *   CI/CD
+    *   multiple environnement (development, preproduction production, etc.)
+    *   Containerized (Docker)
 
 4) What are your best strength : infra ? DB ? web ?
 Give us detail about it
-
+	I estimate that I'm best at DB and Web : I'm worked on many databases and often I have assisted admin database which allowed me to better understand this field. I developed during many years on web API (REST/SOAP) from scratch.
 5) Among all the projects you have worked on. Which architecture do you enjoy the most? explain why ?
+	Microservices coupled with an Order Manager was really interesting.
+	The first one is allows independent developments, quickly deliverable, and modular. A new developer can quickly take ownership of the project.
+	The second one brings resilience to failures, a tool for supervision/monitoring on the status of orders.
