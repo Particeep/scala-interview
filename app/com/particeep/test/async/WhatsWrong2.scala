@@ -1,7 +1,6 @@
 package com.particeep.test.async
 
 import scala.concurrent.Future
-
 import scala.concurrent.ExecutionContext.Implicits.global
 
 case class CEO(id: String, first_name: String, last_name: String)
@@ -29,12 +28,13 @@ object EnterpriseDao {
 object WhatsWrong2 {
 
   //Review this code. What could be done better ? How would you do it ?
-  def getCEOAndEnterprise(ceo_id: Option[String]): Future[(Option[CEO], Option[Enterprise])] = {
-    for {
-      ceo        <- CEODao.byId(ceo_id.get)
-      enterprise <- EnterpriseDao.byCEOId(ceo_id.get)
-    } yield {
-      (ceo, enterprise)
-    }
-  }
+  def getCEOAndEnterprise(ceo_id: Option[String]): Future[(Option[CEO], Option[Enterprise])] =
+    ceo_id.fold(Future.failed[(Option[CEO], Option[Enterprise])](new RuntimeException("id not found")))(id =>
+      for {
+        ceo        <- CEODao.byId(id)
+        enterprise <- EnterpriseDao.byCEOId(id)
+      } yield {
+        (ceo, enterprise)
+      }
+    )
 }

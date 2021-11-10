@@ -15,5 +15,5 @@ git clone the repository and run `sbt clean update compile` and you should be re
 Do the questions in this order
 
 * basic
-* async
+* com.particeep.test.async
 * akka

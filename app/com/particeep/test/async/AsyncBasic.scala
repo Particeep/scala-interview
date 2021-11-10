@@ -1,8 +1,10 @@
 package com.particeep.test.async
 
 import scala.concurrent.Future
-
 import scala.concurrent.ExecutionContext.Implicits.global
+
+trait AppError extends Throwable
+case class NotFound(msg: String) extends AppError
 
 /**
  * You have 2 webservices, we want to compute the sum of the 2 webservice call.
@@ -14,8 +16,19 @@ import scala.concurrent.ExecutionContext.Implicits.global
  */
 object AsyncBasic {
 
-  def compute(id: String) = ???
+  def compute(id: String): Future[Long] = for {
+    r1 <- Webservice1.call(id).flatMap(handleError)
+    r2 <- Webservice2.call(id).flatMap(handleError)
+  } yield r1 + r2
 
+  private def handleError(maybeInt: Option[Int]): Future[Long]         = maybeInt match {
+    case Some(value) => Future.successful(value.toLong)
+    case None        => Future.failed(NotFound("Int not found")) //I would use ADT for a real use case
+  }
+  private def handleError(maybeInt: Either[String, Int]): Future[Long] = maybeInt match {
+    case Right(value) => Future.successful(value.toLong)
+    case Left(err)    => Future.failed(NotFound(err)) //I would use ADT for a real use case
+  }
 }
 
 object Webservice1 {
